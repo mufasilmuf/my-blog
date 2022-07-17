@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Pacifico&family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Roboto:wght@300&display=swap');
+
+.header {
+    background-color: #FD7F2C;
+    color: #fff;
+    box-shadow: 0 0.3rem 0.3rem #d6d6d6;
+}
+
+.header_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_logo {
+    font-size: 40px;
+    font-weight: 400 !important;
+    font-family: 'Pacifico' !important;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+}
+
+// .header_logo:hover {
+//     background-color: #ECECEC !important;
+//     transition: 0.2s ease-in-out;
+// }
+
+.btn_group button {
+    font-family: 'Lato';
+    font-weight: bold;
+    margin-left: 25px;
+}
+
+.btn_group span {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.btn_group span:hover {
+    transition: 0.2s ease-in-out;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.NavBar_container {
+    background-color: #FD9346;
+    color: #fff;
+}
+
+.navBar_group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navBar_group li {
+    padding: 10px 0;
+    list-style: none;
+}

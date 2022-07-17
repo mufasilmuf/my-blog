@@ -1,0 +1,17 @@
+.banner_carousel_container {
+    height: 400px;
+}
+
+.banner_carousel_container img {
+    height: 400px;
+}
+
+@media(max-width:767.98px) {
+    .banner_carousel_container {
+        height: 230px;
+    }
+
+    .banner_carousel_container img {
+        height: 230px;
+    }
+}

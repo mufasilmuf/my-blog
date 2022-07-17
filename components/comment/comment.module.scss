@@ -1,0 +1,36 @@
+.comment_title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.comment_formField {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 25px;
+    margin-bottom: 20px;
+}
+
+.postComment_btn {
+    float: right;
+    background-color: #FD7F2C;
+    color: #fff;
+    text-transform: capitalize;
+    margin: 20px 0;
+}
+
+.postComment_btn:hover {
+    background-color: #FD7F2C;
+}
+
+.comment_section .error_input {
+    border: 1px solid red;
+}
+
+@media(max-width:767.98px) {
+    .comment_formField {
+        display: grid;
+        grid-template-columns: auto;
+        grid-column-gap: 25px;
+        margin-bottom: 20px;
+    }
+}
