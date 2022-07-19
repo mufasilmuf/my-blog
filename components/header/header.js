@@ -9,8 +9,6 @@ import { Classes } from "../../utils/themes/helper-style";
 const Header = (props) => {
     const { HeaderData } = props;
 
-    console.log(HeaderData);
-
     return <>
         <div className={headerStyle.header}>
             <div className={`container ${headerStyle.header_container}`}>
@@ -23,7 +21,7 @@ const Header = (props) => {
                 </div>
             </div>
         </div>
-        <SecondaryHeader />
+        <SecondaryHeader data={HeaderData} />
     </>
 }
 export default Header;

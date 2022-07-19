@@ -10,12 +10,12 @@ const BodySection = (props) => {
 
     return <div className={`container ${bodySectionStyle.main_container}`}>
         <div className="row">
-            <div className={`col-sm-8 ${bodySectionStyle.card_section}`}>
+            <div className={`col-md-8 ${bodySectionStyle.card_section}`}>
                 <SearchBar />
                 <h1>{categoryDetails[0].name}</h1>
                 <Wrapper articles={categoryDetails[0].articles} slug={categoryDetails[0].slug} />
             </div>
-            <div className={`col-sm-4 ${bodySectionStyle.sidebar_section}`}>
+            <div className={`col-md-4 ${bodySectionStyle.sidebar_section}`}>
                 <div></div>
             </div>
         </div>
