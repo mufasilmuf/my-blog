@@ -19,3 +19,7 @@ a {
   margin: 0;
   font-family: 'Lato' !important;
 }
+
+#navbarScrollingDropdown {
+  color: #2F4353;
+}

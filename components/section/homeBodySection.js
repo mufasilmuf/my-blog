@@ -9,13 +9,13 @@ const HomeBodySection = (props) => {
 
     return <div className={`container ${bodySectionStyle.home_bodyContainer}`}>
         <div className="row">
-            <div className={`col-sm-8 ${bodySectionStyle.card_section}`}>
+            <div className={`col-md-8 ${bodySectionStyle.card_section}`}>
                 <SearchBar />
                 {Categories.map((category) => {
                     return <SectionCard key={category.id} category={category} />
                 })}
             </div>
-            <div className={`col-sm-4 ${bodySectionStyle.sidebar_section}`}></div>
+            <div className={`col-md-4 ${bodySectionStyle.sidebar_section}`}></div>
         </div>
     </div>
 }

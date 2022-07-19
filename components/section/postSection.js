@@ -12,8 +12,8 @@ const PostDetail = (props) => {
 
     return <div className={`container ${postDetailStyle.post_container}`}>
         <div className="row">
-            <div className={`col-sm-8 ${postDetailStyle.card_section}`}>
-                <img src={strapi_url + postDetails[0].poster_image[0].url} alt="logo" width="100%" height="350px" />
+            <div className={`col-md-8 ${postDetailStyle.card_section}`}>
+                <img src={strapi_url + postDetails[0].poster_image[0].url} alt="logo" width="100%" height="350px" className={postDetailStyle.poster_img} />
                 <ul className={postDetailStyle.post_updateInfo}>
                     <li><b>Category</b>: {postDetails[0].category.name}</li>
                     <li><b>By</b>: {postDetails[0].author.name}</li>
@@ -23,11 +23,11 @@ const PostDetail = (props) => {
                 <div dangerouslySetInnerHTML={{ __html: postDetails[0].content }} />
                 <AuthorCard authorDetails={postDetails[0].author} />
                 <h3 className={postDetailStyle.related_title}>Related Articles</h3>
-                <Wrapper articles={reduceArray(relatedPost, 3)} slug={category_slug} postLink={true} />
+                <Wrapper articles={reduceArray(relatedPost, 3)} slug={category_slug} />
                 <h3 className={postDetailStyle.related_title}>Comments</h3>
                 <CommentCard />
             </div>
-            <div className={`col-sm-4 ${postDetailStyle.sidebar_section}`}></div>
+            <div className={`col-md-4 ${postDetailStyle.sidebar_section}`}></div>
         </div>
     </div>
 }

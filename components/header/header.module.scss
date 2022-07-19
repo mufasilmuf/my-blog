@@ -44,17 +44,150 @@
     cursor: pointer;
 }
 
-.NavBar_container {
-    background-color: #FD9346;
-    color: #fff;
+//NavBar styles.....
+
+.navBar_container {
+    // background-color: #FDA766;
 }
 
-.navBar_group {
+.nav_logo {
+    // font-family: 'Pacifico' !important;
+    // font-size: 24px;
+}
+
+.navbar_items {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.navbar_items li {
+    list-style: none;
+    font-size: 17px;
+    color: #2F4353;
+    font-weight: bold;
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+.active_category {
+    color: #FD7F2C !important;
+}
+
+.navBar_itemDropdown {
+    padding: 0;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+    height: auto;
+}
+
+.navBar_body {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-.navBar_group li {
-    padding: 10px 0;
-    list-style: none;
+.mobile_logo,
+.mobile_signIn {
+    display: none;
+}
+
+@media (min-width:768px) and (max-width:991.98px) {
+    .navbar_items li {
+        list-style: none;
+        font-size: 14px;
+        color: #2F4353;
+        font-weight: bold;
+        margin-right: 30px;
+        cursor: pointer;
+    }
+
+    .navBar_itemDropdown {
+        padding: 0;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        height: auto;
+    }
+}
+
+@media(max-width:767.98px) {
+    .header {
+        display: none;
+    }
+
+    .navBar_container {
+        background-color: #FD7F2C;
+    }
+
+    .navBar_toggle span {
+        display: none;
+    }
+
+    .navBar_toggle {
+        color: #fff !important;
+        border: none;
+    }
+
+    .navBar_toggle:focus {
+        border: none;
+        box-shadow: none;
+    }
+
+    .mobile_logo {
+        font-size: 24px;
+        color: #fff;
+        font-weight: 400 !important;
+        font-family: 'Pacifico' !important;
+        cursor: pointer;
+        display: unset;
+    }
+
+    .mobile_signIn {
+        display: unset;
+        background-color: #fff !important;
+        font-size: 14px;
+        color: #FD7F2C;
+        background-color: #fff;
+        text-transform: capitalize;
+        border-radius: 20px;
+        padding: 4px 10px;
+    }
+
+    .toggle_logo {
+        font-size: 24px;
+        color: #FD7F2C;
+        font-weight: 400 !important;
+        font-family: 'Pacifico' !important;
+        cursor: pointer;
+        display: unset;
+    }
+
+    .navbar_items {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .navBar_body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar_items li {
+        list-style: none;
+        font-size: 17px;
+        color: #2F4353;
+        font-weight: bold;
+        margin: 0px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
 }
