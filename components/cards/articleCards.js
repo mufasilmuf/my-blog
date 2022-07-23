@@ -9,7 +9,7 @@ import { TrimFunction, DateConvertor } from '../../utils/functions/helper-functi
 const ArticleCard = (props) => {
     const { data, categorySlug } = props;
 
-    return <Card className={articleCardStyle.article_card}>
+    return <div className={articleCardStyle.article_card}>
         <Link href={"/" + categorySlug + '/' + data.slug} >
             <img className={articleCardStyle.card_header_image} src={data.image.url} alt={data.title} />
         </Link>
@@ -26,6 +26,6 @@ const ArticleCard = (props) => {
                 </Link>
             </Box>
         </div>
-    </Card>
+    </div>
 }
 export default ArticleCard;

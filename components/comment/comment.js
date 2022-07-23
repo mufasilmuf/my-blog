@@ -1,6 +1,7 @@
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Button } from "react-bootstrap";
 
 import commentCardStyle from "./comment.module.scss";
 
@@ -10,10 +11,15 @@ const regex = {
 }
 
 const CommentCard = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const submitForm = (data) => {
         console.log(data);
+        reset({
+            name: "",
+            email: "",
+            comment: ""
+        })
     };
 
     return <div className={commentCardStyle.comment_section}>

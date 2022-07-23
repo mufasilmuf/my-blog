@@ -10,7 +10,7 @@ const AuthorCard = (props) => {
 
     return <div className={authorCardStyle.author_card_container}>
         <h3>About Author</h3>
-        <Card className={authorCardStyle.author_card}>
+        <div className={authorCardStyle.author_card}>
             <Box >
                 <img src={authorDetails.picture.url} alt="logo" />
             </Box>
@@ -25,7 +25,7 @@ const AuthorCard = (props) => {
                 </Box>
                 <p className={authorCardStyle.author_details}>{TrimFunction(authorDetails.details, 400)}</p>
             </Box>
-        </Card>
+        </div>
     </div>
 }
 export default AuthorCard;

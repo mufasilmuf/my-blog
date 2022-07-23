@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: auto auto;
     grid-column-gap: 25px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .postComment_btn {
@@ -16,21 +16,33 @@
     color: #fff;
     text-transform: capitalize;
     margin: 20px 0;
+    border: none;
 }
 
+.postComment_btn:focus,
 .postComment_btn:hover {
     background-color: #FD7F2C;
+    box-shadow: none;
 }
 
 .comment_section .error_input {
     border: 1px solid red;
 }
 
+.error_text {
+    position: absolute;
+}
+
 @media(max-width:767.98px) {
     .comment_formField {
         display: grid;
         grid-template-columns: auto;
+        grid-row-gap: 30px;
         grid-column-gap: 25px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
+    }
+
+    .error_text {
+        font-size: 14px;
     }
 }
