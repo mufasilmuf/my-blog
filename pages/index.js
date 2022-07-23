@@ -46,6 +46,14 @@ query{
   }
 }`;
 
+var hostname = "https://my-blog-seven-phi.vercel.app";
+var href = "https://my-blog-seven-phi.vercel.app";
+
+if (typeof window !== 'undefined') {
+  hostname = window.location.origin;
+  href = window.location.href
+};
+
 const fetchCategoriesData = async () => {
   const { data } = await client.mutate({
     mutation: homeData

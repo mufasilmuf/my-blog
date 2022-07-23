@@ -4,13 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import FollowUs from "../socialMediaIcons/followUsIcon";
 import { useRouter } from 'next/router';
 import { MenuOutlined } from "@mui/icons-material";
 import { Box, Button } from "@mui/material";
 
 import navStyle from "./header.module.scss";
-import { Classes } from "../../utils/themes/helper-style";
 
 
 function SecondaryHeader(props) {

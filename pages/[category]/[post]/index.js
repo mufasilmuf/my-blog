@@ -74,6 +74,14 @@ query categories($category_slug: String!){
     }
 }`;
 
+var hostname = "https://my-blog-seven-phi.vercel.app";
+var href = "https://my-blog-seven-phi.vercel.app";
+
+if (typeof window !== 'undefined') {
+  hostname = window.location.origin;
+  href = window.location.href
+};
+
 const fetchHeaderData = async () => {
   const { data } = await client.mutate({
     mutation: headerData

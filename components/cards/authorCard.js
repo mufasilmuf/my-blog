@@ -6,14 +6,13 @@ import { TrimFunction } from "../../utils/functions/helper-function";
 import authorCardStyle from "./articleCard.module.scss";
 
 const AuthorCard = (props) => {
-    const strapi_url = process.env.STRAPI_URL;
     const { authorDetails } = props
 
     return <div className={authorCardStyle.author_card_container}>
         <h3>About Author</h3>
         <Card className={authorCardStyle.author_card}>
             <Box >
-                <img src={strapi_url + authorDetails.picture.url} alt="logo" />
+                <img src={authorDetails.picture.url} alt="logo" />
             </Box>
             <Box>
                 <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>

@@ -7,13 +7,12 @@ import Wrapper from "./wrapper";
 import CommentCard from "../comment/comment";
 
 const PostDetail = (props) => {
-    const strapi_url = process.env.STRAPI_URL;
     const { postDetails, relatedPost, category_slug } = props;
 
     return <div className={`container ${postDetailStyle.post_container}`}>
         <div className="row">
             <div className={`col-md-8 ${postDetailStyle.card_section}`}>
-                <img src={strapi_url + postDetails[0].poster_image[0].url} alt="logo" width="100%" height="350px" className={postDetailStyle.poster_img} />
+                <img src={postDetails[0].poster_image[0].url} alt="logo" width="100%" height="350px" className={postDetailStyle.poster_img} />
                 <ul className={postDetailStyle.post_updateInfo}>
                     <li><b>Category</b>: {postDetails[0].category.name}</li>
                     <li><b>By</b>: {postDetails[0].author.name}</li>
