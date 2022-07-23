@@ -6,7 +6,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useRouter } from 'next/router';
 import { MenuOutlined } from "@mui/icons-material";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
+import { Button } from "react-bootstrap";
 
 import navStyle from "./header.module.scss";
 
@@ -34,7 +35,7 @@ function SecondaryHeader(props) {
                         <MenuOutlined fontSize="large" />
                     </Navbar.Toggle>
                     <Link href="/">
-                        <Box className={navStyle.mobile_logo}>CookBook</Box>
+                        <div className={navStyle.mobile_logo}>CookBook</div>
                     </Link>
                     <Box>
                         <Button className={navStyle.mobile_signIn}>SignIn</Button>
@@ -45,8 +46,8 @@ function SecondaryHeader(props) {
                         placement="start"
                     >
                         <Offcanvas.Header closeButton>
-                            <Offcanvas.Title id="offcanvasNavbarLabel-expand-md" className={navStyle.toggle_logo}>
-                                CookBook
+                            <Offcanvas.Title id="offcanvasNavbarLabel-expand-md">
+                                <span className={navStyle.toggle_logo}>CookBook</span>
                             </Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body className={navStyle.navBar_body}>

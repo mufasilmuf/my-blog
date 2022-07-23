@@ -1,0 +1,14 @@
+.liteBtn_theme {}
+
+.darkBtn_theme {
+    background-color: #FD7F2C;
+    color: #fff;
+    text-transform: capitalize;
+    border: none;
+}
+
+.darkBtn_theme:focus,
+.darkBtn_theme:hover {
+    background-color: #FD7F2C;
+    box-shadow: none;
+}
