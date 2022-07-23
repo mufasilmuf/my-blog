@@ -1,0 +1,58 @@
+.popular_title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #FD7F2C;
+}
+
+.popularPost_card {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 #fff;
+    cursor: pointer;
+}
+
+.post_image {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+
+.post_title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #2F4353;
+}
+
+.post_description {
+    font-size: 16px;
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .post_title {
+        font-size: 14px;
+    }
+
+    .post_description {
+        font-size: 12px;
+    }
+}
+
+@media(max-width:767.98px) {
+    .popular_title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #FD7F2C;
+    }
+
+    .post_title {
+        font-size: 15px;
+    }
+
+    .post_description {
+        font-size: 12px;
+    }
+}

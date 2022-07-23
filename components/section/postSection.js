@@ -5,6 +5,8 @@ import { DateConvertor, reduceArray } from "../../utils/functions/helper-functio
 import AuthorCard from "../cards/authorCard";
 import Wrapper from "./wrapper";
 import CommentCard from "../comment/comment";
+import PopularArticles from "../widgets/items/popularArticles";
+import FeaturedVideo from "../widgets/items/featuredVideo";
 
 const PostDetail = (props) => {
     const { postDetails, relatedPost, category_slug } = props;
@@ -26,7 +28,10 @@ const PostDetail = (props) => {
                 <h3 className={postDetailStyle.related_title}>Comments</h3>
                 <CommentCard />
             </div>
-            <div className={`col-md-4 ${postDetailStyle.sidebar_section}`}></div>
+            <div className={`col-md-4 ${postDetailStyle.sidebar_section}`}>
+                <PopularArticles />
+                <FeaturedVideo />
+            </div>
         </div>
     </div>
 }

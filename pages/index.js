@@ -5,8 +5,8 @@ import { gql } from '@apollo/client';
 import client from "../apollo-client";
 import Header from '../components/header/header';
 import HomeBodySection from '../components/section/homeBodySection';
-import styles from '../styles/Home.module.css';
 import Footer from '../components/footer/footer';
+// import { fetchHeaderData } from '../modules/common/service';
 
 const homeData = gql`
 query {

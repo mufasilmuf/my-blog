@@ -5,26 +5,23 @@
     margin-bottom: 50px;
 }
 
-.card_section,
-.sidebar_section {
-    // padding: 0 30px;
+.card_section {
+    margin-bottom: 25px;
 }
 
 .category_title {
     font-size: 24px;
     text-transform: capitalize;
     font-weight: 500;
-    color: #2F4353;
+    color: #FD7F2C;
     cursor: pointer;
 }
 
 .category_title:hover {
-    color: #FD7F2C;
     transition: all 0.1s ease-in-out;
 }
 
 .more_btn {
-    color: #FD7F2C;
     cursor: pointer;
 }
 
