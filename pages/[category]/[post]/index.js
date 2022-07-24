@@ -1,78 +1,13 @@
 import Head from "next/head";
 import React from "react";
-import { gql } from "@apollo/client";
 
-import client from "../../../apollo-client";
 import Footer from "../../../components/footer/footer";
 import Header from "../../../components/header/header";
 import PostDetail from "../../../components/section/postSection";
-
-const headerData = gql`
-query{
-  categories{
-    id
-    name
-    slug
-  }
-}`;
-
-const postData = gql`
-query articles($article_slug: String!){
-    articles(where:{slug: $article_slug}){
-      id
-      title
-      slug
-      description
-      content
-      createdAt
-      category{
-        name
-      }
-      image{
-        url
-      }
-      poster_image{
-        url
-      }
-      author{
-        id
-        name
-        details
-        picture{
-          url
-        }
-      }
-    }
-}`;
-
-const relatedPostData = gql`
-query categories($category_slug: String!){
-    categories(where:{slug: $category_slug}) {
-      id
-      name
-      slug
-      articles {
-        id
-        title
-        slug
-        description
-        category{
-          name
-        }
-        author {
-          id
-          name
-          picture{
-            url
-          }
-        }
-        image{
-          url
-        }
-        createdAt
-      }
-    }
-}`;
+import { fetchHeaderData } from "../../../modules/common/service";
+import { fetchPostDetail, fetchRelatedPost } from "../../../modules/articles/service";
+import { updateViewCount } from "../../../modules/axios-api";
+import { fetchMostReadPost, fetchFeaturedVideos } from "../../../modules/widgets/service";
 
 var hostname = "https://my-blog-seven-phi.vercel.app";
 var href = "https://my-blog-seven-phi.vercel.app";
@@ -81,29 +16,6 @@ if (typeof window !== 'undefined') {
   hostname = window.location.origin;
   href = window.location.href
 };
-
-const fetchHeaderData = async () => {
-  const { data } = await client.mutate({
-    mutation: headerData
-  })
-  return data;
-}
-
-const fetchPostDetails = async (slug) => {
-  const { data } = await client.mutate({
-    variables: { article_slug: slug },
-    mutation: postData
-  })
-  return data
-}
-
-const fetchRelatedPost = async (slug) => {
-  const { data } = await client.mutate({
-    variables: { category_slug: slug },
-    mutation: relatedPostData
-  })
-  return data
-}
 
 export const getStaticPaths = async () => {
   const articles = await fetch(process.env.STRAPI_URL + '/articles');
@@ -133,21 +45,26 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  const postDetail = await fetchPostDetails(params.post);
+  const postDetail = await fetchPostDetail(params.post);
   const relatedPost = await fetchRelatedPost(params.category);
   const headerData = await fetchHeaderData();
+  const mostReadPost = await fetchMostReadPost();
+  const featuredVideo = await fetchFeaturedVideos();
+  await updateViewCount(postDetail.articles[0].id, postDetail.articles[0].views);
 
   return {
     props: {
       postInfo: postDetail.articles,
       relatedPosts: relatedPost.categories,
-      headers: headerData.categories
+      headers: headerData.categories,
+      popularArticles: mostReadPost.articles,
+      featuredVideos: featuredVideo.featuredVideos
     },
   }
 }
 
 const Articles = (props) => {
-  const { postInfo, relatedPosts, headers } = props;
+  const { postInfo, relatedPosts, headers, popularArticles, featuredVideos } = props;
 
   return <>
     <Head>
@@ -156,7 +73,7 @@ const Articles = (props) => {
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <Header HeaderData={headers} />
-    <PostDetail postDetails={postInfo} relatedPost={relatedPosts[0].articles} category_slug={relatedPosts[0].slug} />
+    <PostDetail postDetails={postInfo} relatedPost={relatedPosts[0].articles} category_slug={relatedPosts[0].slug} popularPost={popularArticles} featuredVideo={featuredVideos} />
     <Footer />
   </>
 }

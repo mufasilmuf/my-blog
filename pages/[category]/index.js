@@ -1,20 +1,12 @@
 import Head from "next/head";
 import React from "react";
-import { gql } from "@apollo/client";
 
-import client from '../../apollo-client';
 import Header from "../../components/header/header";
 import BodySection from "../../components/section/bodySection";
 import Footer from "../../components/footer/footer";
-
-const headerData = gql`
-query{
-  categories{
-    id
-    name
-    slug
-  }
-}`;
+import { fetchHeaderData } from "../../modules/common/service";
+import { fetchCategoryPostAPI } from "../../modules/articles/service";
+import { fetchMostReadPost, fetchFeaturedVideos } from "../../modules/widgets/service";
 
 var hostname = "https://my-blog-seven-phi.vercel.app";
 var href = "https://my-blog-seven-phi.vercel.app";
@@ -23,50 +15,6 @@ if (typeof window !== 'undefined') {
     hostname = window.location.origin;
     href = window.location.href
 };
-
-const categoryData = gql`
-query categories($category_slug: String!){
-    categories(where:{slug: $category_slug}) {
-      id
-      name
-      slug
-      articles {
-        id
-        title
-        slug
-        description
-        category{
-          name
-        }
-        author {
-          id
-          name
-          picture{
-            url
-          }
-        }
-        image{
-          url
-        }
-        createdAt
-      }
-    }
-}`;
-
-const fetchHeaderData = async () => {
-    const { data } = await client.mutate({
-        mutation: headerData
-    })
-    return data;
-}
-
-const fetchCategoryDetails = async (slug) => {
-    const { data } = await client.mutate({
-        variables: { category_slug: slug },
-        mutation: categoryData
-    })
-    return data;
-}
 
 export const getStaticPaths = async () => {
     const categories = await fetch(process.env.STRAPI_URL + '/categories');
@@ -95,19 +43,23 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const { params } = context;
-    const categoryData = await fetchCategoryDetails(params.category);
+    const categoryData = await fetchCategoryPostAPI(params.category);
     const headerData = await fetchHeaderData();
+    const mostReadPost = await fetchMostReadPost();
+    const featuredVideo = await fetchFeaturedVideos();
 
     return {
         props: {
             category: categoryData.categories,
-            headers: headerData.categories
+            headers: headerData.categories,
+            popularArticles: mostReadPost.articles,
+            featuredVideos: featuredVideo.featuredVideos
         },
     }
 }
 
 const Category = (props) => {
-    const { category, headers } = props;
+    const { category, headers, popularArticles, featuredVideos } = props;
 
     return <>
         <Head>
@@ -116,7 +68,7 @@ const Category = (props) => {
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Header HeaderData={headers} />
-        <BodySection categoryDetails={category} />
+        <BodySection categoryDetails={category} popularPost={popularArticles} featuredVideo={featuredVideos} />
         <Footer />
     </>
 }

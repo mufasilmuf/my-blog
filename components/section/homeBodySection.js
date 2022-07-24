@@ -7,7 +7,7 @@ import bodySectionStyle from "./bodySection.module.scss";
 import SectionCard from "./sectionCard";
 
 const HomeBodySection = (props) => {
-    const { Categories } = props;
+    const { Categories, popularPost, featuredVideo } = props;
 
     return <div className={`container ${bodySectionStyle.home_bodyContainer}`}>
         <div className="row">
@@ -18,8 +18,8 @@ const HomeBodySection = (props) => {
                 })}
             </div>
             <div className={`col-md-4 ${bodySectionStyle.sidebar_section}`}>
-                <PopularArticles />
-                <FeaturedVideo />
+                <PopularArticles post={popularPost} />
+                <FeaturedVideo videos={featuredVideo} />
             </div>
         </div>
     </div>

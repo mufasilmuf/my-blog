@@ -1,7 +1,5 @@
-import { gql } from '@apollo/client';
-
 const Common = {
-    headerData: gql`query{
+  headerData: `query{
         categories{
           id
           name

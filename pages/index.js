@@ -1,50 +1,12 @@
 import Head from 'next/head';
 import React from 'react';
-import { gql } from '@apollo/client';
 
-import client from "../apollo-client";
 import Header from '../components/header/header';
 import HomeBodySection from '../components/section/homeBodySection';
 import Footer from '../components/footer/footer';
-// import { fetchHeaderData } from '../modules/common/service';
-
-const homeData = gql`
-query {
-  categories {
-    id
-    name
-    slug
-    articles {
-      id
-      title
-      slug
-      description
-      category{
-        name
-      }
-      author {
-        id
-        name
-        picture{
-          url
-        }
-      }
-      image{
-        url
-      }
-      createdAt
-    }
-  }
-}`;
-
-const headerData = gql`
-query{
-  categories{
-    id
-    name
-    slug
-  }
-}`;
+import { fetchHeaderData } from '../modules/common/service';
+import { fetchHomePagePost } from "../modules/articles/service";
+import { fetchMostReadPost, fetchFeaturedVideos } from "../modules/widgets/service";
 
 var hostname = "https://my-blog-seven-phi.vercel.app";
 var href = "https://my-blog-seven-phi.vercel.app";
@@ -54,34 +16,24 @@ if (typeof window !== 'undefined') {
   href = window.location.href
 };
 
-const fetchCategoriesData = async () => {
-  const { data } = await client.mutate({
-    mutation: homeData
-  })
-  return data;
-}
-
-const fetchHeaderData = async () => {
-  const { data } = await client.mutate({
-    mutation: headerData
-  })
-  return data;
-}
-
-export const getStaticProps = async (context) => {
-  const categoriesData = await fetchCategoriesData();
+export const getStaticProps = async () => {
+  const categoriesData = await fetchHomePagePost();
   const headerData = await fetchHeaderData();
+  const mostReadPost = await fetchMostReadPost();
+  const featuredVideo = await fetchFeaturedVideos();
 
   return {
     props: {
       categories: categoriesData.categories,
-      headers: headerData.categories
+      headers: headerData.categories,
+      popularArticles: mostReadPost.articles,
+      featuredVideos: featuredVideo.featuredVideos
     }
   }
 }
 
 export default function Home(props) {
-  const { categories, headers } = props;
+  const { categories, headers, popularArticles, featuredVideos } = props;
 
   return (
     <>
@@ -91,7 +43,7 @@ export default function Home(props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header HeaderData={headers} />
-      <HomeBodySection Categories={categories} />
+      <HomeBodySection Categories={categories} popularPost={popularArticles} featuredVideo={featuredVideos} />
       <Footer />
     </>
   )

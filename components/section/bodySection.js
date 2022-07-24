@@ -7,7 +7,7 @@ import PopularArticles from "../widgets/items/popularArticles";
 import FeaturedVideo from "../widgets/items/featuredVideo";
 
 const BodySection = (props) => {
-    const { categoryDetails } = props;
+    const { categoryDetails, popularPost, featuredVideo } = props;
 
     return <div className={`container ${bodySectionStyle.main_container}`}>
         <div className="row">
@@ -17,8 +17,8 @@ const BodySection = (props) => {
                 <Wrapper articles={categoryDetails[0].articles} slug={categoryDetails[0].slug} />
             </div>
             <div className={`col-md-4 ${bodySectionStyle.sidebar_section}`}>
-                <PopularArticles />
-                <FeaturedVideo />
+                <PopularArticles post={popularPost} />
+                <FeaturedVideo videos={featuredVideo} />
             </div>
         </div>
     </div>

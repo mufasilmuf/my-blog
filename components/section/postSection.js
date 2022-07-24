@@ -9,7 +9,7 @@ import PopularArticles from "../widgets/items/popularArticles";
 import FeaturedVideo from "../widgets/items/featuredVideo";
 
 const PostDetail = (props) => {
-    const { postDetails, relatedPost, category_slug } = props;
+    const { postDetails, relatedPost, category_slug, popularPost, featuredVideo } = props;
 
     return <div className={`container ${postDetailStyle.post_container}`}>
         <div className="row">
@@ -29,8 +29,8 @@ const PostDetail = (props) => {
                 <CommentCard />
             </div>
             <div className={`col-md-4 ${postDetailStyle.sidebar_section}`}>
-                <PopularArticles />
-                <FeaturedVideo />
+                <PopularArticles post={popularPost} />
+                <FeaturedVideo videos={featuredVideo} />
             </div>
         </div>
     </div>
